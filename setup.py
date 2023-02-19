@@ -11,7 +11,7 @@ setuptools.setup(
     version="0.0.1",
     author="takuma104",
     author_email="takuma104@gmail.com",
-    description="",
+    description="ControlNet hint embedding utilities",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/takuma104/controlnet_hinter",
