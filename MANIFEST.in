@@ -1,0 +1,8 @@
+include LICENSE
+include *.md
+include controlnet_hinter.py
+include annotator
+recursive-include annotator *.txt *.py
+exclude README.md
+include requirements.txt
+include test-requirements.txt
