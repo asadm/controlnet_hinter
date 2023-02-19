@@ -3,6 +3,9 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+def _requires_from_file(filename):
+    return open(filename).read().splitlines()
+
 setuptools.setup(
     name="controlnet_hinter",
     version="0.0.1",
@@ -18,4 +21,5 @@ setuptools.setup(
         "License :: OSI Approved :: Apache License",
         "Operating System :: OS Independent",
     ],
+    install_requires=_requires_from_file('requirements.txt'),
 )
