@@ -9,7 +9,7 @@ def _requires_from_file(filename):
 
 setuptools.setup(
     name="controlnet_hinter",
-    version="0.0.2",
+    version="0.0.3",
     author="takuma104",
     author_email="takuma104@gmail.com",
     description="ControlNet hint embedding utilities",

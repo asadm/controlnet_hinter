@@ -11,3 +11,4 @@ scikit-image
 addict>=2.4.0
 yapf>=0.32.0
 prettytable
+basicsr
