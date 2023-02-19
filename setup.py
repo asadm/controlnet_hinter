@@ -15,7 +15,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/takuma104/controlnet_hinter",
-    py_modules=['controlnet_hinter'],
+    py_modules=['controlnet_hinter', 'annotator'],
     classifiers=[
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: Apache License",
