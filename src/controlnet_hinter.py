@@ -27,7 +27,7 @@ def hint_canny(image: Image.Image, width=512, height=512, low_threshold=100, hig
             annotators['canny'] = CannyDetector()
         detected_map = annotators['canny'](img, low_threshold, high_threshold)
         detected_map = HWC3(detected_map)
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_depth(image: Image.Image, width=512, height=512, detect_resolution=384):
@@ -48,7 +48,7 @@ def hint_depth(image: Image.Image, width=512, height=512, detect_resolution=384)
 
         detected_map = cv2.resize(
             detected_map, (W, H), interpolation=cv2.INTER_LINEAR)
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_fake_scribble(image: Image.Image, width=512, height=512, detect_resolution=512):
@@ -73,7 +73,7 @@ def hint_fake_scribble(image: Image.Image, width=512, height=512, detect_resolut
         detected_map = cv2.GaussianBlur(detected_map, (0, 0), 3.0)
         detected_map[detected_map > 4] = 255
         detected_map[detected_map < 255] = 0
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_hed(image: Image.Image, width=512, height=512, detect_resolution=512):
@@ -94,7 +94,7 @@ def hint_hed(image: Image.Image, width=512, height=512, detect_resolution=512):
 
         detected_map = cv2.resize(
             detected_map, (W, H), interpolation=cv2.INTER_LINEAR)
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_hough(image: Image.Image, width=512, height=512, detect_resolution=512,
@@ -114,7 +114,7 @@ def hint_hough(image: Image.Image, width=512, height=512, detect_resolution=512,
 
         detected_map = cv2.resize(
             detected_map, (W, H), interpolation=cv2.INTER_NEAREST)
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_normal(image: Image.Image, width=512, height=512, detect_resolution=384, bg_threshold=0.4):
@@ -135,7 +135,7 @@ def hint_normal(image: Image.Image, width=512, height=512, detect_resolution=384
 
         detected_map = cv2.resize(
             detected_map, (W, H), interpolation=cv2.INTER_LINEAR)
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_openpose(image: Image.Image, width=512, height=512, detect_resolution=512):
@@ -156,7 +156,7 @@ def hint_openpose(image: Image.Image, width=512, height=512, detect_resolution=5
 
         detected_map = cv2.resize(
             detected_map, (W, H), interpolation=cv2.INTER_LINEAR)
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_scribble(image: Image.Image, width=512, height=512):
@@ -169,7 +169,7 @@ def hint_scribble(image: Image.Image, width=512, height=512):
 
         detected_map = np.zeros_like(img, dtype=np.uint8)
         detected_map[np.min(img, axis=2) < 127] = 255
-        return detected_map
+        return Image.fromarray(detected_map)
 
 
 def hint_segmentation(image: Image.Image, width=512, height=512, detect_resolution=512):
@@ -190,4 +190,4 @@ def hint_segmentation(image: Image.Image, width=512, height=512, detect_resoluti
 
         detected_map = cv2.resize(
             detected_map, (W, H), interpolation=cv2.INTER_LINEAR)
-        return detected_map
+        return Image.fromarray(detected_map)
