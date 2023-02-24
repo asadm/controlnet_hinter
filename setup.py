@@ -9,7 +9,7 @@ def _requires_from_file(filename):
 
 setuptools.setup(
     name="controlnet_hinter",
-    version="0.0.4",
+    version="0.0.5",
     author="takuma104",
     author_email="takuma104@gmail.com",
     description="ControlNet hint embedding utilities",
@@ -18,6 +18,7 @@ setuptools.setup(
     url="https://github.com/takuma104/controlnet_hinter",
     packages=find_packages("src"),
     package_dir={"": "src"},
+    py_modules=['controlnet_hinter'],
     classifiers=[
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: Apache Software License",
