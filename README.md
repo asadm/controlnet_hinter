@@ -5,7 +5,7 @@
 
 [ControlNet](https://github.com/lllyasviel/ControlNet) by [@lllyasviel](https://huggingface.co/lllyasviel) is a neural network structure to control diffusion models by adding extra conditions. This library was created to assist [🤗Diffusers](https://github.com/huggingface/diffusers) when building ControlNet models with Diffusers. It is intended to be easy to use with  Diffusers’ `StableDiffusionControlNetPipeline` (under development). 
 
-![controlnet_hinter concept](docs/images/controlnet_hinter.png) 
+<img width="512" src="https://github.com/takuma104/controlnet_hinter/raw/main/docs/images/controlnet_hinter.png"/>
 
 ## To install
 
@@ -24,13 +24,13 @@ pip install git+https://github.com/takuma104/controlnet_hinter
 Canny Edge Detection
 ```py
 import controlnet_hinter
-from diffusers import StableDiffusionControlNetPipeline, EulerAncestralDiscreteScheduler
+from diffusers import StableDiffusionControlNetPipeline
 from diffusers.utils import load_image
 
 original_image = load_image("https://huggingface.co/datasets/diffusers/test-arrays/resolve/main/stable_diffusion_imgvar/input_image_vermeer.png")
 control_image = controlnet_hinter.hint_canny(original_image) # this one line to add
 image = pipe_canny(prompt="best quality, extremely detailed", 
-                   negative_prompt="monochrome, lowres, bad anatomy, worst quality, low quality",
+                   negative_prompt="lowres, bad anatomy, worst quality, low quality",
                    image=control_image).images[0]
 image.save('generated.png')
 ```
