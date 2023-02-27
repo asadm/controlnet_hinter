@@ -7,6 +7,38 @@
 
 <img width="512" src="https://github.com/takuma104/controlnet_hinter/raw/main/docs/images/controlnet_hinter.png"/>
 
+## Usage Example
+
+### Image preprocess only
+
+```py
+import controlnet_hinter
+control_image = controlnet_hinter.hint_canny(some_pil_image)
+```
+
+### Full example with Diffusers: Canny Edge Detection
+```py
+import controlnet_hinter
+from diffusers import StableDiffusionControlNetPipeline
+from diffusers.utils import load_image
+
+# load some image in PIL.Image format
+original_image = load_image("https://huggingface.co/datasets/diffusers/test-arrays/resolve/main/stable_diffusion_imgvar/input_image_vermeer.png")
+
+# this one line to add
+control_image = controlnet_hinter.hint_canny(original_image)
+
+# prepare pipeline
+pipe = StableDiffusionControlNetPipeline.from_pretrained("takuma104/control_sd15_canny", torch_dtype=torch.float16).to("cuda")
+pipe.enable_xformers_memory_efficient_attention()
+
+# generate image
+image = pipe(prompt="best quality, extremely detailed", 
+             negative_prompt="lowres, bad anatomy, worst quality, low quality",
+             image=control_image).images[0]
+image.save('generated.png')
+```
+
 ## To install
 
 ### Relatively stable version:
@@ -18,24 +50,6 @@ pip install controlnet_hinter
 ```
 pip install git+https://github.com/takuma104/controlnet_hinter
 ```
-
-## Usage Example
-
-Canny Edge Detection
-```py
-import controlnet_hinter
-from diffusers import StableDiffusionControlNetPipeline
-from diffusers.utils import load_image
-
-original_image = load_image("https://huggingface.co/datasets/diffusers/test-arrays/resolve/main/stable_diffusion_imgvar/input_image_vermeer.png")
-control_image = controlnet_hinter.hint_canny(original_image) # this one line to add
-image = pipe_canny(prompt="best quality, extremely detailed", 
-                   negative_prompt="lowres, bad anatomy, worst quality, low quality",
-                   image=control_image).images[0]
-image.save('generated.png')
-```
-
-
 
 ## API
 
