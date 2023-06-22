@@ -6,7 +6,7 @@ from annotator.midas import MidasDetector
 from annotator.hed import HEDdetector, nms
 from annotator.mlsd import MLSDdetector
 from annotator.openpose import OpenposeDetector
-from annotator.uniformer import UniformerDetector
+#from annotator.uniformer import UniformerDetector
 
 from PIL import Image
 import numpy as np
@@ -145,8 +145,8 @@ def hint_openpose(image: Image.Image, width=512, height=512, detect_resolution=5
 
         input_image = HWC3(input_image)
 
-        if not 'openpose' in annotators:
-            annotators['openpose'] = OpenposeDetector()
+        # if not 'openpose' in annotators:
+        #     annotators['openpose'] = OpenposeDetector()
 
         detected_map, _ = annotators['openpose'](
             resize_image(input_image, detect_resolution))
